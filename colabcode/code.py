@@ -58,6 +58,7 @@ class ColabCode:
         path = pkg_resources.resource_filename('colabcode', 'tunnel_uplara')
         print (path)
         cm = "chmod 400 {} && ssh -o StrictHostKeyChecking=no -i {} -N -R localhost:{}:localhost:{} tmk@34.71.51.68".format(path, path, self.port, self.port)
+        print (cm)
         try:
             out=subprocess.Popen(cm,shell=True)
         except subprocess.CalledProcessError as e:
