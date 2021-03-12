@@ -1,5 +1,7 @@
 import os
 import subprocess
+import pkg_resources
+
 # from pyngrok import ngrok
 
 try:
@@ -9,6 +11,8 @@ try:
 except ImportError:
     colab_env = False
 
+path = pkg_resources.resource_filename('colabcode', 'tunnel_uplara')
+print (path)
 
 EXTENSIONS = ["ms-python.python", "jithurjacob.nbpreviewer"]
 
@@ -47,9 +51,13 @@ class ColabCode:
         #     out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
         # except subprocess.CalledProcessError as e:
         #     raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
-
+        
+        pkg_resources.resource_filename('colabcode', 'tunnel_uplara')
         # cm="chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
-        cm = "chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:{}:localhost:{} tmk@34.71.51.68".format(self.port, self.port)
+
+        path = pkg_resources.resource_filename('colabcode', 'tunnel_uplara')
+        print (path)
+        cm = "chmod 400 {} && ssh -o StrictHostKeyChecking=no -i {} -N -R localhost:{}:localhost:{} tmk@34.71.51.68".format(path, path, self.port, self.port)
         try:
             out=subprocess.Popen(cm,shell=True)
         except subprocess.CalledProcessError as e:
