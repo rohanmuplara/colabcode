@@ -55,7 +55,7 @@ class ColabCode:
         except subprocess.CalledProcessError as e:
             raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
         url = 'https://{}.colabcode.uplara.com'.format(self.port)
-        print(f"Code Server can be accessed on: {url}")
+        print(f"fucker Code Server can be accessed on: {url}")
 
     def _run_code(self):
         os.system(f"fuser -n tcp -k {self.port}")
