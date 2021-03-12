@@ -55,6 +55,8 @@ class ColabCode:
         except subprocess.CalledProcessError as e:
             raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
         url = 'https://{}.colabcode.uplara.com'.format(self.port)
+        import pdb
+        pdb.set_trace()
         print(f"fucker Code Server can be accessed on: {url}")
 
     def _run_code(self):
